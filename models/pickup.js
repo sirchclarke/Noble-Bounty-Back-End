@@ -1,5 +1,5 @@
 'use strict'
-const { Model } = require('sequelize')
+const { Model, ForeignKeyConstraintError } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
   class Pickup extends Model {
     /**
@@ -9,11 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Pickup.belongsTo(models.Order, { ForeignKey: order_id })
     }
   }
   Pickup.init(
     {
-      order_id: DataTypes.STRING,
+      order_id: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'orders',
+          key: 'id'
+        }
+      },
       pickup_date: DataTypes.DATE,
       customer_address: DataTypes.STRING
     },

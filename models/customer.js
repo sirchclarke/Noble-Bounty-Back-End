@@ -9,19 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Customer.belongsToMany(models.Course, {
-        as: 'courses',
-        through: models.Grade,
-        foreignKey: 'studentId'
+      Customer.hasOne(models.Order, {
+        as: 'orders',
+
+        foreignKey: 'customer_id'
       })
     }
   }
   Customer.init(
     {
-      customer_name: DataTypes.STRING,
-      customer_address: DataTypes.STRING,
-      customer_email: DataTypes.STRING,
-      customer_password: DataTypes.STRING
+      customer_name: { type: DataTypes.STRING, allowNull: false },
+      customer_address: { type: DataTypes.STRING, allowNull: false },
+      customer_email: { type: DataTypes.STRING, allowNull: false },
+      customer_password: { type: DataTypes.STRING, allowNull: false }
     },
     {
       sequelize,
