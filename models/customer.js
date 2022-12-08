@@ -9,9 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Customer.hasOne(models.Order, {
-        as: 'orders',
-
+      Customer.hasone(models.Order, {
         foreignKey: 'customer_id'
       })
     }
@@ -21,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       customer_name: { type: DataTypes.STRING, allowNull: false },
       customer_address: { type: DataTypes.STRING, allowNull: false },
       customer_email: { type: DataTypes.STRING, allowNull: false },
-      customer_password: { type: DataTypes.STRING, allowNull: false }
+      passwordDigest: { type: DataTypes.STRING, allowNull: false }
     },
     {
       sequelize,
