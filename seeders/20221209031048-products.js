@@ -5,7 +5,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     let orders = [...Array(5)].map((_) => ({
       order_date: falso.randRecentDate(),
-      item_type: falso.randFood(),
+      item_type: falso.randProductDescription(),
       createdAt: new Date(),
       updatedAt: new Date()
     }))
