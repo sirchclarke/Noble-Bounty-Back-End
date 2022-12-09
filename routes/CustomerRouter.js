@@ -9,17 +9,24 @@ Router.get(
   // middleware.verifyToken,
   controller.getCustomerById
 )
+Router.put(
+  '/:customer_id',
+  // middleware.stripToken,
+  // middleware.verifyToken,
+  controller.updateCustomerById
+)
+
 Router.delete(
   '/:customer_id',
   // middleware.stripToken,
   // middleware.verifyToken,
   controller.deleteCustomer
 )
-// Router.put(
-//   '/order/:customer_id',
-//   // middleware.stripToken,
-//   // middleware.verifyToken,
-//   controller.updateOrder
-// )
+Router.post(
+  '/addCustomer',
+  // middleware.stripToken,
+  // middleware.verifyToken,
+  controller.addCustomer
+)
 
 module.exports = Router

@@ -25,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       order_date: DataTypes.DATE,
       item_type: DataTypes.STRING,
-      customer_address: DataTypes.STRING
+      customer_address: DataTypes.STRING,
+      item_image: DataTypes.TEXT
     },
     {
       sequelize,

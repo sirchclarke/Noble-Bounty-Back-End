@@ -17,9 +17,26 @@ const getCustomerById = async (req, res) => {
     throw error
   }
 }
-
-
-
+const addCustomer = async (req, res) => {
+  try {
+    const customer = await new Customer(req.body)
+    await customer.save()
+    res.send(customer)
+  } catch (error) {
+    throw error
+  }
+}
+const updateCustomerById = async (req, res) => {
+  try {
+    const customerId = parseInt(req.params.customer_id)
+    const updateCustomer = await Customer.update(req.body, {
+      where: { id: customerId }
+    })
+    res.send(updateCustomer)
+  } catch (error) {
+    throw error
+  }
+}
 const deleteCustomer = async (req, res) => {
   try {
     await Customer.destroy({ where: { id: req.params.customer_id } })
@@ -35,6 +52,8 @@ const deleteCustomer = async (req, res) => {
 
 module.exports = {
   getAllCustomers,
+  addCustomer,
   getCustomerById,
-  deleteCustomer
+  deleteCustomer,
+  updateCustomerById
 }
