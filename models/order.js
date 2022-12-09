@@ -9,12 +9,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Order.hasOne(models.Customer, { foreignKey: customer_id })
+      Order.belongsTo(models.Customer, { foreignKey: 'customer_id' })
+      Order.hasOne(models.Pickup, { foreignKey: 'order_id' })
     }
   }
   Order.init(
     {
-      customer_id: DataTypes.STRING,
+      customer_id: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'customers',
+          key: 'id'
+        }
+      },
       order_date: DataTypes.DATE,
       item_type: DataTypes.STRING,
       customer_address: DataTypes.STRING

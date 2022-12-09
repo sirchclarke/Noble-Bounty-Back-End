@@ -58,6 +58,6 @@ const deleteCustomer = async (req, res) => {
 module.exports = {
   getAllCustomers,
   getCustomerById,
-  updateOrder,
+  //   updateOrder,
   deleteCustomer
 }
