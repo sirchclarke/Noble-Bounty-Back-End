@@ -30,7 +30,7 @@ const updatePickupById = async (req, res) => {
   try {
     const pickupId = parseInt(req.params.pickup_id)
     const updatePickup = await Pickup.update(req.body, {
-      where: { id: orderId }
+      where: { id: pickupId }
     })
     res.send(updatePickup)
   } catch (error) {
