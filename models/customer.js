@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Customer.hasone(models.Order, {
+      Customer.hasOne(models.Order, {
         foreignKey: 'customer_id'
       })
     }

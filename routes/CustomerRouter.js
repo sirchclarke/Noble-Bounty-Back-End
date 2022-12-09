@@ -2,24 +2,24 @@ const Router = require('express').Router()
 const controller = require('../controllers/CustomerController')
 const middleware = require('../middleware')
 
-Router.get('/', controller.getAllCustomer)
+Router.get('/', controller.getAllCustomers)
 Router.get(
-  '/:student_id',
+  '/:customer_id',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.getStudentById
+  controller.getCustomerById
 )
 Router.delete(
-  '/:student_id',
+  '/:customer_id',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.deleteStudent
+  controller.deleteCustomer
 )
 Router.put(
-  '/gpa/:student_id',
+  '/order/:customer_id',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.updateGpa
+  controller.updateOrder
 )
 
 module.exports = Router
