@@ -18,29 +18,7 @@ const getCustomerById = async (req, res) => {
   }
 }
 
-// const updateOrder = async (req, res) => {
-//   try {
-//     const grades = await Grade.findAll({
-//       where: {
-//         customer: req.params.student_id
-//       }
-//     })
-//     // res.send(grades)
-//     let sum = 0
-//     for (const number of grades) {
-//       sum += number.grade
-//     }
-//     let gpa = sum / grades.length
-//     // Update GPA
-//     const newGpa = await Student.update(
-//       { gpa: gpa },
-//       { where: { id: req.params.student_id }, returning: true }
-//     )
-//     res.send(newGpa)
-//   } catch (error) {
-//     throw error
-//   }
-// }
+
 
 const deleteCustomer = async (req, res) => {
   try {
@@ -58,6 +36,5 @@ const deleteCustomer = async (req, res) => {
 module.exports = {
   getAllCustomers,
   getCustomerById,
-  //   updateOrder,
   deleteCustomer
 }
