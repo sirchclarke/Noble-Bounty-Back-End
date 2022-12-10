@@ -21,7 +21,7 @@ module.exports = {
       customer_address: {
         type: Sequelize.STRING
       },
-      item_Image: {
+      item_image: {
         type: Sequelize.TEXT
       },
       createdAt: {
