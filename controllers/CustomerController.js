@@ -37,6 +37,28 @@ const updateCustomerById = async (req, res) => {
     throw error
   }
 }
+const getCustomerOrder = async (req, res) => {
+  try {
+    const customer = await Customer.findAll({
+      include: [
+        {
+          model: 'order',
+          as: 'customer order',
+          include: [
+            {
+              model: 'MenuItems',
+              as: 'order_items'
+            }
+          ]
+        }
+      ]
+    })
+    res.send(customer)
+  } catch (error) {
+    throw error
+  }
+}
+
 const deleteCustomer = async (req, res) => {
   try {
     await Customer.destroy({ where: { id: req.params.customer_id } })
@@ -55,5 +77,6 @@ module.exports = {
   addCustomer,
   getCustomerById,
   deleteCustomer,
-  updateCustomerById
+  updateCustomerById,
+  getCustomerOrder
 }
