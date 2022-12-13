@@ -4,9 +4,10 @@ const middleware = require('../middleware')
 const Login = async (req, res) => {
   try {
     const customer = await Customer.findOne({
-      where: { email: req.body.email },
+      where: { customer_email: req.body.customer_email },
       raw: true
     })
+    console.log(customer)
     if (
       customer &&
       (await middleware.comparePassword(
@@ -16,7 +17,7 @@ const Login = async (req, res) => {
     ) {
       let payload = {
         id: customer.id,
-        email: customer.email
+        customer_email: customer.customer_email
       }
       let token = middleware.createToken(payload)
       console.log(payload)
@@ -30,11 +31,13 @@ const Login = async (req, res) => {
 
 const Register = async (req, res) => {
   try {
-    const { customer_name, customer_email, password } = req.body
+    const { customer_name, customer_address, customer_email, password } =
+      req.body
     let passwordDigest = await middleware.hashPassword(password)
     const customer = await Customer.create({
       customer_name,
       customer_email,
+      customer_address,
       passwordDigest
     })
     res.send(customer)

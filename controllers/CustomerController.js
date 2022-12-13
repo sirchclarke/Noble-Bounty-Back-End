@@ -19,8 +19,8 @@ const getCustomerById = async (req, res) => {
 }
 const addCustomer = async (req, res) => {
   try {
-    const customer = await new Customer(req.body)
-    await customer.save()
+    const customer = await Customer.create(req.body)
+
     res.send(customer)
   } catch (error) {
     throw error

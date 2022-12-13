@@ -5,6 +5,9 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     let customers = [...Array(5)].map((_) => {
       const customer_address = `${falso.randStreetAddress()} ${falso.randCity()}, ${falso.randState()}`
+      //  const password = falso.randPassword()
+      //  let passwordDigest = await middleware.hashPassword(password)
+
       return {
         customer_name: falso.randFullName(),
         customer_address: customer_address,
