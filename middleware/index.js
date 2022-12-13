@@ -6,10 +6,9 @@ const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS)
 const APP_SECRET = process.env.APP_SECRET
 
 const hashPassword = async (password) => {
-  console.log(password)
   // Accepts a password from the request body
   let hashedPassword = await bcrypt.hash(password, SALT_ROUNDS)
-  console.log(hashedPassword)
+
   //   Creates a hashed password and encrypts it 12 times
   return hashedPassword
 }
@@ -18,7 +17,7 @@ const comparePassword = async (storedPassword, password) => {
   // Accepts the password provided in the login request and the currently stored password
   // Compares the two passwords for a match
   let passwordMatch = await bcrypt.compare(password, storedPassword)
-  console.log(passwordMatch)
+
   //   returns true if the passwords match
   // returns false if the passwords are not a match
   return passwordMatch

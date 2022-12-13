@@ -7,12 +7,12 @@ const Login = async (req, res) => {
       where: { customer_email: req.body.customer_email },
       raw: true
     })
-    console.log(customer)
+
     if (
       customer &&
       (await middleware.comparePassword(
         customer.passwordDigest,
-        req.body.password
+        req.body.customer_password
       ))
     ) {
       let payload = {
@@ -30,14 +30,13 @@ const Login = async (req, res) => {
 }
 
 const Register = async (req, res) => {
+  console.log(req.body)
   try {
-    const { customer_name, customer_address, customer_email, password } =
-      req.body
-    let passwordDigest = await middleware.hashPassword(password)
+    const { customer_name, customer_email, customer_password } = req.body
+    let passwordDigest = await middleware.hashPassword(customer_password)
     const customer = await Customer.create({
       customer_name,
       customer_email,
-      customer_address,
       passwordDigest
     })
     res.send(customer)
