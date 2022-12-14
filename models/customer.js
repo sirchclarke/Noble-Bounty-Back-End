@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Customer.hasOne(models.Order, {
-        foreignKey: 'customer_id'
+        foreignKey: 'customer_id',
+        as: 'customer_order'
       })
     }
   }

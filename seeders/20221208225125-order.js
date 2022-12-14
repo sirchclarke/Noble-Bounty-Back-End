@@ -7,7 +7,9 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     const customer = await Customer.findAll({ raw: true })
     let orders = [...Array(5)].map((_) => ({
-      customer_id: customer[Math.floor(Math.random() * customer.length)].id,
+      customer_id: parseInt(
+        customer[Math.floor(Math.random() * customer.length)].id
+      ),
       order_date: falso.randRecentDate(),
       item_type: falso.randFood(),
       createdAt: new Date(),

@@ -20,6 +20,7 @@ const getPickupById = async (req, res) => {
 const addPickup = async (req, res) => {
   try {
     const pickup = await new Pickup(req.body)
+
     await pickup.save()
     res.send(pickup)
   } catch (error) {
@@ -30,7 +31,7 @@ const updatePickupById = async (req, res) => {
   try {
     const pickupId = parseInt(req.params.pickup_id)
     const updatePickup = await Pickup.update(req.body, {
-      where: { id: pickupId }
+      where: { order_id: pickupId }
     })
     res.send(updatePickup)
   } catch (error) {

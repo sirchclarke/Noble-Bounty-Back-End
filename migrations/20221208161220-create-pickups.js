@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       order_id: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       pickup_date: {
         type: Sequelize.DATE
@@ -21,11 +21,11 @@ module.exports = {
       item_image: {
         type: Sequelize.TEXT
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }

@@ -1,4 +1,4 @@
-const { Order } = require('../models')
+const { Order, Pickup } = require('../models')
 
 const getAllOrders = async (req, res) => {
   try {
@@ -10,8 +10,13 @@ const getAllOrders = async (req, res) => {
 }
 
 const getOrderById = async (req, res) => {
+  let orderId = parseInt(req.params.order_id)
+  console.log(orderId)
   try {
-    const order = await Order.findByPk(req.params.order_id)
+    const order = await Order.findByPk(parseInt(req.params.order_id), {
+      // include: [{ model: Pickup }]
+    })
+
     res.send(order)
   } catch (error) {
     throw error

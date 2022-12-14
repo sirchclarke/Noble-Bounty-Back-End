@@ -43,7 +43,7 @@ const getCustomerOrder = async (req, res) => {
       include: [
         {
           model: 'order',
-          as: 'customer order',
+          as: 'customer_order',
           include: [
             {
               model: 'MenuItems',
